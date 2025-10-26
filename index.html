@@ -1,40 +1,171 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy 2nd Anniversary 💖</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      overflow: hidden;
-      font-family: 'Poppins', sans-serif;
-      color: #fff;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Happy 2nd Anniversary Sayangggkuu💖</title>
+<style>
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  text-align: center;
+  overflow-x: hidden;
+}
+h1 {margin-top: 40px;}
+img.main {
+  width: 220px; height: 220px; border-radius: 50%; object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+button {
+  background: #fff; color: #ff6699; border: none; padding: 10px 20px;
+  margin: 10px; border-radius: 25px; cursor: pointer; font-weight: bold;
+  transition: background 0.3s, color 0.3s;
+}
+button:hover {background: #ffb6c1; color: #fff;}
 
-    h1 {
-      font-size: 2.5em;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-      animation: fadeIn 2s ease-in-out;
-    }
+#secretMessage, #photoMemories, #judulFoto, #judulVideo, #videoMemories, #trollButtons {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+  visibility: hidden;
+}
 
-    p {
-      font-size: 1.2em;
-      max-width: 600px;
-      text-align: center;
-      margin: 10px;
-      animation: fadeIn 3s ease-in-out;
-    }
+.fade-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  visibility: visible !important;
+}
 
-    img {
-      width: 220px;
-      height: 220px;
+/* Foto & video tetap 3 kolom tengah */
+#photoMemories, #videoMemories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px auto;
+  max-width: 900px;
+}
+.memory-item {
+  background: rgba(255,255,255,0.2);
+  border-radius: 10px;
+  width: calc(33.33% - 20px);
+  min-width: 260px;
+  box-sizing: border-box;
+  padding: 8px;
+}
+.memory-item img, .memory-item video {
+  width: 100%; height: 200px; border-radius: 10px; object-fit: cover;
+}
+.caption {font-size: 0.9em; margin-top: 6px; font-style: italic;}
+.video-thumb {position: relative; cursor: pointer;}
+.play-button {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 45px; color: white; text-shadow: 0 0 8px #000;
+}
+#trollButtons {margin-bottom: 60px;}
+</style>
+</head>
+<body>
+
+<h1>💖 Happy 2nd Anniversary Sayangkuuu 💖</h1>
+<img src="foto.jpg" alt="Foto kita" class="main">
+<p>
+  Dua tahun penuh cinta, tawa, dan kenangan indah.<br>
+  Terima kasih sudah jadi bagian terindah dalam hidupku.<br>
+  Semoga kisah ini terus abadi, sampai selamanya cill 💞
+</p>
+
+<button onclick="showSecret()">💌 Klik di sini untuk pesan rahasia 💌</button>
+
+<div id="secretMessage">
+  Aku cinta kamu lebih dari kemarin,<br>
+  dan lebih sedikit dari besok ❤️
+</div>
+
+<h2 id="judulFoto">📸 Kenangan Foto Kita 📸</h2>
+<div id="photoMemories">
+  <div class="memory-item"><img src="kenangan1.jpg"><div class="caption">Papp pertama dari ayangg yangg palingg imuttt</div></div>
+  <div class="memory-item"><img src="kenangan2.jpg"><div class="caption">Momennn palingg lucuuu yangg enda pernah aku lupainnn</div></div>
+  <div class="memory-item"><img src="kenangan3.jpg"><div class="caption">nii jugaa nii lagi foto sama bocill lagii ultah</div></div>
+  <div class="memory-item"><img src="kenangan4.jpg"><div class="caption">Walpaperrr yang paling cantik sekaligus walpaperrr pertama mukaa dedee di hapeekuu 💐</div></div>
+  <div class="memory-item"><img src="kenangan5.jpg"><div class="caption">Hari ulang tahun pira tapii malah kitaa yang megangg kuenyaa hehehhee 🎂</div></div>
+  <div class="memory-item"><img src="kenangan6.jpg"><div class="caption">gantengg kalii akuu disinii :b</div></div>
+  <div class="memory-item"><img src="kenangan7.jpg"><div class="caption">pipiii atuu tbemm bangett disinii tapii dedee cantiii🫶</div></div>
+  <div class="memory-item"><img src="kenangan8.jpg"><div class="caption">dirumahh kaniaa malahh bucinn pulakk tapii Langit sore pass itu cantii kayaaa dedeee ☀️</div></div>
+  <div class="memory-item"><img src="kenangan9.jpg"><div class="caption">dedeee dan tawa kecilmuuuu 😍</div></div>
+  <div class="memory-item"><img src="kenangan10.jpg"><div class="caption">Terima kasih sudah jadi rumah buat hatikuuu sayanggg 🏠❤️</div></div>
+</div>
+
+<h2 id="judulVideo">🎥 Kenangan Video Kita 🎥</h2>
+<div id="videoMemories">
+  <div class="memory-item">
+    <div class="video-thumb" onclick="playVideo(this, 'video1.mp4')">
+      <img src="thumb1.jpg" alt="Video 1"><div class="play-button">▶️</div>
+    </div>
+    <div class="caption">Video waktu dedeee naikk keletaa samaa akuuu</div>
+  </div>
+  <div class="memory-item">
+    <div class="video-thumb" onclick="playVideo(this, 'video2.mp4')">
+      <img src="thumb2.jpg" alt="Video 2"><div class="play-button">▶️</div>
+    </div>
+    <div class="caption">Pertamaa kalii tempatt kakk diahh malahh lasakk bangett yaa maininn ucingg✈️</div>
+  </div>
+</div>
+
+<div id="trollButtons">
+  <h2>Sayangg gak sama akuu? 😚</h2>
+  <button id="yesBtn" onclick="sayang()">Sayangg bangett ❤️</button>
+  <button id="noBtn" onclick="moveButton()">Gak sayang 😜</button>
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="instrumen.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function fadeIn(el, delay) {
+  setTimeout(() => el.classList.add('fade-in'), delay);
+}
+
+function showSecret() {
+  document.getElementById('bgMusic').play();
+  fadeIn(document.getElementById('secretMessage'), 0);
+  fadeIn(document.getElementById('judulFoto'), 1000);
+  fadeIn(document.getElementById('photoMemories'), 1500);
+  fadeIn(document.getElementById('judulVideo'), 3000);
+  fadeIn(document.getElementById('videoMemories'), 3500);
+  fadeIn(document.getElementById('trollButtons'), 5000);
+}
+
+function playVideo(el, src) {
+  const video = document.createElement('video');
+  video.src = src;
+  video.controls = true;
+  video.autoplay = true;
+  video.style.width = '100%';
+  video.style.height = '200px';
+  video.style.borderRadius = '10px';
+  el.parentNode.replaceChild(video, el);
+}
+
+function moveButton() {
+  const btn = document.getElementById('noBtn');
+  const x = Math.random() * (window.innerWidth - 200);
+  const y = Math.random() * (window.innerHeight - 150);
+  btn.style.position = 'absolute';
+  btn.style.left = x + 'px';
+  btn.style.top = y + 'px';
+}
+
+function sayang() {
+  alert('Awww aku jugaa sayangg bangett sama kamu 😘💞');
+}
+</script>
+</body>
+</html>      height: 220px;
       object-fit: cover;
       border-radius: 50%;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
